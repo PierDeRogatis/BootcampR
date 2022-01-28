@@ -1,0 +1,920 @@
+---
+title: 'Bootcamp Data Science: R'
+author: "Pierluigi De Rogatis"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+DAY ONE - Introduction to R
+
+```{r}
+
+# R many advantages and good for data science
+
+# RStudio interface with Console, Script editor, Environment/History, and Files/Plots/Packages/Plots
+
+getwd()  # to see where current working directory is located
+
+help()  # to ask help to R
+
+# example() # to run an example section from the help
+
+```
+
+
+Exercises
+1.1
+```{r}
+
+# Create your GitHub profile and first repository Introduction2R
+
+```
+
+
+1.2
+```{r}
+
+# Create your first R scripts using R-Studio: File –> New File –> R Script and name it.
+
+# Translated into R Markdown
+
+```
+
+
+1.3
+```{r}
+
+# Simply try to add two numbers and print your answer
+
+a1 <- 675 + 32
+
+print(a1)
+
+```
+
+
+1.4
+```{r}
+
+# Now try to subtract 5 from it and print your answer
+
+a2 <- a1 - 5
+
+print(a2)
+
+```
+
+
+1.5
+```{r}
+
+# Now multiply the answer with 3 using * operator and print the answer.
+
+a3 <- a2*3
+
+print(a3)
+
+```
+
+
+1.6
+```{r}
+
+# Now divide the number by 2 using / operator.
+
+a4 <- a3/2
+
+print(a4)
+
+```
+
+
+1.7
+```{r}
+
+# Assign values and print them with print function
+
+P <- 1000
+
+r <- 0.02
+
+t <- 22
+
+ti <- P * r * t
+
+print(ti)
+
+```
+
+
+DAY TWO - Syntax and Data Structures
+
+```{r}
+
+# Lecture
+# To assign values
+
+p <- 3
+
+# Six data types: 1. Numeric; 2. Character; 3. Integer; 4. Logical; 5. Complex; 6. Raw
+
+# To have vectors, c() function
+
+# To translate into a factor, factor() function
+
+# To create a matrix (same length and identical datatype), use matrix()
+
+# To create a dataframe (same length but vector of different type), use data.frame()
+
+# To create a list (any types inside), use list()
+
+# To create string assign them to objects between '' or "". To see number of character in a string: nchar()
+
+str <- "Hello Essex"
+nchar(str)
+
+# Use the grepl() to see if a character or sequence of characters are present in a string
+
+grepl("H", str)
+grepl("Y", str)
+
+# Use paste() to combine more strings, paste0() if you don't want spaces
+# TO insert characters that are illegal in a string, use escape character "\" and print with cat()
+
+# To extract part of a string use str_sub()
+
+library(tidyverse)
+x <- c("Apple", "Banana", "Pear")
+str_sub(x, 1, 3)
+str_sub(x, -3, -1)
+
+# Compare variables with booleans, true or false
+
+# + for addition, - for subtraction
+# * for multiplication, / for division
+# %% for modulus (remainder from division)
+
+# = for equal, != for not equal
+# > for greater than, < for less than
+# >= for greater than or equal to
+# <= for less than or equal to
+
+# IF statement to execute a code if a condition is TRUE
+# ELSE IF to add a condition is the preceding one is FALSE
+# ELSE if all previous conditions are FALSE
+
+# & is "and" symbol to combine conditional statements
+# | is "or"
+
+# WHILE loops executed as long as a condition is TRUE, when BREAK statement the loop stops, NEXT statement to skip an interaction in a loop
+
+# FOR loops for iterating over a sequence
+
+# Functions as self-contained modules of code that accomplish a specific task, use function(). Inputs are called "arguments". 
+
+```
+
+
+Exercise
+2.1
+```{r}
+
+# Exercises with changing number and mathematical functions
+
+x <- 3
+
+y <- 5
+
+number <- x + y
+
+print(number)
+
+x <- 5
+
+number <- x + y
+
+print(number)
+
+y <- 10
+
+number <- x + y
+
+print(number)
+
+```
+
+
+2.2a
+```{r}
+
+# Vectors
+
+hPrice <- c(5000000, 4500000, 3600000)
+
+hQuality <- c("Good", "Average", "Bad")
+
+combined <- c(hPrice, hQuality)
+
+print(combined)
+
+```
+
+2.2b
+```{r}
+
+# Convert into factor and then as data frame
+
+hQuality <- factor(hQuality)
+
+df <- data.frame(hPrice, hQuality)
+
+```
+
+
+2.3
+```{r}
+
+# Exercise with if statements
+
+a <- 687
+b <- 446
+c <- 476
+
+if (b > a) {
+  print("b is greater than a")
+} else if (a == b) {
+  print("a and b are equal")
+} else {
+  print("a is greater than b")
+}
+
+```
+
+2.4
+```{r}
+
+a <- 687
+b <- 446
+c <- 476
+
+if (b > a & b > c) {
+  print("b is the greatest")
+} else if (a < b | a < c) {
+  print("a is low")
+} else {
+  print("b neither high or low")
+}
+
+```
+
+2.5
+```{r}
+
+# Exercise for while loop
+
+var_1 = c("Apple", "Apple", "Apple","Apple","Apple", "Banana", "Apple","Apple","Apple")
+length(var_1)
+fruit = 1
+
+while (var_1[fruit] == "Apple") {
+  print(var_1[fruit])
+  fruit <- fruit + 1
+}
+
+
+i <- 12
+while (i > 1) {
+  i <- i - 1
+  if (i == 9) {
+    next
+  }
+  else if (i == 4) {
+    break
+   }
+print(i)
+  }
+
+```
+
+
+2.6
+```{r}
+
+# Exercise for for loop (dice faces exercise)
+
+dice_faces <- c(1:6)
+
+for (x in dice_faces) {
+  print(x)
+}
+
+# Exercise: invent a function useful for academia
+
+my_votes <- floor(runif(20, min = 0, max = 100))
+  
+my_addition <- function(data) {
+  for (x in data){
+    if (x < 50) {
+    print(paste(x, "Fail"))
+  } else if (x > 50 & x < 60) {
+    print(paste(x, "Acceptable"))
+  } else if (x > 60 & x < 70){
+    print(paste(x, "Very good"))
+  } else {
+    print(paste(x, "Excellent"))
+    }
+  }
+}
+  
+my_addition(my_votes)
+
+```
+
+
+```{r}
+
+# Exercise: invent a function that calculate the area of the rectangle and one for the area of the trapezium
+
+# To calculate the area of a rectangle the formula is A=b*h (Area = base * height)
+
+rec_area <- function(x, y){
+  area_r <- x*y
+  print(area_r)
+}
+
+# Random integers for the value of the base and height
+
+rec_base <- floor(runif(1, min = 1, max = 20))
+rec_height <- floor(runif(1, min = 1, max = 10))
+
+# Call the function
+
+rec_area(rec_base, rec_height)
+
+# To calculate the area of a trapezium is A=1/2*(b+B)*h (Area = 1/2 * height * (minor base + major base))
+
+trap_area <- function(x, y, z){
+  area_t <- 0.5*x*(y+z)
+  print(area_t)
+}
+
+# Random integers for the values
+
+trap_height <- floor(runif(1, min = 1, max = 10))
+trap_base <- floor(runif(1, min = 10, max = 30))
+trap_Base <- floor(runif(1, min = 20, max = 40))
+
+# Call the function
+
+trap_area(trap_height, trap_base, trap_Base)
+
+```
+
+
+DAY THREE - Read_Write_Analyse Data
+
+```{r}
+#Lecture
+# To understand what packages I have instlaeed
+
+sessionInfo()
+
+# To have a list of attached packages
+
+search()
+
+# To install packages and load them
+
+# install.packages()
+library()
+
+# TO find a useful function
+
+# help.search()
+
+# To read CSV data
+
+# read.csv()   # by default (utils)
+# read_csv()   # by tidyverse (readr)
+
+# To read TSV data
+
+# read_tsv()   # by tidyverse (readr)
+
+# To read TXT data
+
+# read.table()   # by default (utils)
+# read_table()   # by tidyverse (readr)
+# read_delim()   # by tidyverse (readr)
+
+# To see beginning and ending of dataframe
+
+# head()
+# tail()
+
+# Other functions to analyses content/structur of data
+
+# str()  # compact display of data contents (env.)
+# class()  # data type
+# summary()  # detailed display with statistics and frequencies
+# For vectors
+# length()  # number of elements in a vector of factor
+# For dataframe and matrix only
+# dim()  # returns dimensions of the dataset
+# nrow()  # number of rows
+# ncol()  # number of columns
+# rownames()  # rown names
+# colnames()  # column names
+
+# To select data, needed two indices in square brackets, first for row and second for column, separated by comma
+
+# To write on files, use write.csv()
+
+```
+
+
+3.1
+```{r}
+
+# Exercise: install and load ggplot2
+
+# install.packages("ggplot2")
+
+library(ggplot2)
+
+# Import the CSV odTrees and shootings
+
+odTrees <- read.csv("C:/Users/pierl/Desktop/Bootcamp R/odTrees.csv")
+
+shootings <- read.csv("C:/Users/pierl/Desktop/Bootcamp R/shootings.csv")
+
+# To see the first data:
+
+head(odTrees)
+
+head(shootings)
+
+# To see the last data:
+
+tail(odTrees)
+
+tail(shootings)
+
+```
+
+3.2
+```{r}
+
+# Exercises on ways to select data
+
+row <- c(3, 5)
+row <- as.numeric(row)
+col <- c(2, 5, 6, 8, 10)
+col <- as.numeric(col)
+odTrees[row, col]
+
+hg <- c(1, 3, 5)
+hg <- as.numeric(hg)
+odTrees[hg, 2]
+
+row <- c(3, 5)
+row <- as.numeric(row)
+col <- c(2, 5, 6, 8, 10)
+col <- as.numeric(col)
+odTrees[row, col]
+
+odTrees[c(2,4), c("TYPEOFTREE", "TREETAG")]
+
+cnd <- odTrees$TREESURROUND == "Shrubs"
+sh_tree <- odTrees[cnd, c("TYPEOFTREE", "TREETAG", "CONDITION")]
+
+# Exercise on write csv files
+
+write.csv(sh_tree, file = "C:/Users/pierl/Desktop/RStudio Data/sh_tree.csv")
+
+```
+
+
+DAY FOUR - R Graphics and Statistics
+
+```{r}
+# Lecture
+
+# Create a vector to store data
+
+cars <- c(1, 3, 6, 4, 9)
+# dev.off()
+plot(cars)
+
+# If you want to customise the points/dots, and add a title:
+
+plot(cars, type = "o", col = "blue")
+title(main = "Autos", col.main = "red", font.main = 4)
+
+# If I add another vector
+
+trucks <- c(2, 5, 4, 5, 12)
+plot(cars, type="o", col="blue", ylim=c(0,12))
+lines(trucks, type="o", pch=22, lty=2, col="red")
+title(main="Autos", col.main="red", font.main=4)
+
+# For a Bar Chart
+
+barplot(cars)
+
+# For Histograms
+
+suvs <- c(4,4,6,6,16)
+hist(suvs)
+
+# For Pie Chart
+
+pie(cars)
+
+# For better plotting, package "ggplot2"
+
+geom_point()  # one possibility for drawing graphs
+geom_smooth()  # to highlight patterns in the graph, especially as regressions (lm)
+geom_bar()  # for bar plots
+geom_histogram()  # for histograms
+geom_boxplot()  # for boxplots
+theme(legend.position = , legend.title = , legend.text = )  # to change position, title, or text of the legend
+
+# STATISTICS in R
+
+# mean()  # to calculate the mean, with "na.rm = TRUE" argument to remove NA values
+# median() # for the median
+# for mode, you have to create your own function
+# max() #for max value
+# min() #for min value
+
+# MACHINE LEARNING
+# Typical machine learning tasks are concept learning, function learning or “predictive modeling”, clustering and finding predictive patterns. 
+# Supervised learning -> learning algorithm with labelled example inputs, where the labels indicate the desired output
+# Unsupervised learning -> no labels are provided, and the learning algorithm focuses solely on detecting structure in unlabelled input data
+# Reinforcement learning -> learning algorithm performs a task using feedback from operating in a real or synthetic environment
+
+# Linear regression used to predict quantitative outcome y on the basis of one single predictor variable x. 
+# Sum of the squares of the residual errors -> RSS (Residual Sum of Squares)
+# RSE (Residual Standard Error) -> average variation of points around the fitted regression line
+# OLS (Ordinary Least Squared) -> regression line with RSS as minimal as possible
+# cor() # for correlation between variables
+# lm() # to determine beta coefficients of linera model
+
+```
+
+
+4.1
+```{r}
+
+# Create charts with new data, so I created random numbers to display them
+
+data_g <- floor(runif(30, min = 0, max = 1000))
+pie(data_g)
+hist(data_g)
+barplot(data_g)
+
+```
+
+
+4.2
+```{r}
+
+# Use of data IRIS for the exercises
+
+library(ggplot2)
+data("iris")
+
+iris <- ggplot(iris, aes(Sepal.Length, Petal.Length, colour=Species)) + geom_point()
+print(iris)
+
+# OR, in different ways and to add different things to exercise
+
+print(iris + labs(y="Petal length (cm)", x = "Sepal length (cm)") 
+      + ggtitle("Petal and sepal length of iris"))
+iris + annotate("text", x = 6, y = 5, label = "text")  # to add text
+iris + annotate("text", x = 4:6, y = 5:7, label = "text")  # to add repeat
+iris + annotate("rect", xmin = 5, xmax = 7, ymin = 4, ymax = 6, alpha = .5)  # to highlight an area
+iris + annotate("segment", x = 5, xend = 7, y = 4, yend = 5, colour = "black")  # for a segment
+
+```
+
+
+4.3
+```{r}
+
+# Plot another dataset
+
+plant_plot <- ggplot(PlantGrowth, aes(x=group, y=weight)) + 
+  geom_point()
+print(plant_plot)
+
+# Exercise: swipe x and y axes
+
+plan_plot_inv <- ggplot(PlantGrowth, aes(x=weight, y=group)) + geom_point()
+print(plan_plot_inv)
+
+```
+
+
+4.4
+```{r}
+
+# To add a theme and legends
+
+data("iris")
+iris_3 <- ggplot(iris, aes(Sepal.Length, Petal.Length, colour=Species)) + geom_point()
+print(iris_3)
+iris_3 + theme(legend.position = "top")
+
+iris_4 <- ggplot(iris, aes(Sepal.Length, Petal.Length, colour=Species)) + geom_point()
+print(iris_4)
+iris_4 <- iris_4 + theme(legend.title = element_text(colour = "blue", size = 10))
+print(iris_4)
+
+iris_5 <- iris_4 + theme(legend.text = element_text(colour = "red", size = 10))
+print(iris_5)
+
+```
+
+
+4.5
+```{r}
+
+# Change data in "mpg" and use some bar charts and histograms
+#First, a bar chart
+
+data("mpg")
+b_plot<-ggplot(mpg, aes(x=factor(cyl))) + geom_bar(stat = "count")
+print(b_plot)
+
+# Then, an histogram
+
+h_plot <- ggplot(data = mpg, aes(x=hwy)) + 
+  geom_histogram(col = "red",
+                 fill = "green", 
+                 alpha = 0.2, 
+                 binwidth = 5)
+print(h_plot)
+
+# Then, a box plot
+
+box_car <- ggplot(mtcars, aes(x=as.factor(cyl), y=mpg)) + 
+    geom_boxplot(fill="slateblue", alpha=0.2) + 
+    xlab("cyl")
+print(box_car)
+
+```
+
+4.6
+```{r}
+
+# After loading the package, visualise the data
+
+data("marketing", package = "datarium")
+
+sal_you <- ggplot(marketing, aes(x = youtube, y = sales)) + geom_point() + stat_smooth()
+
+# Run a regression
+
+reg_sal_you <- lm(sales ~ youtube, data = marketing)
+print(reg_sal_you)
+
+```
+
+DAY FIVE - ML Case Study
+
+
+GROUP PROJECT
+
+```{r}
+
+# GROUP PROJECT
+
+#Firstly, I recall the shootings dataset with summary to check the data
+
+summary(shootings)
+
+```
+1
+```{r}
+
+# Question 1 - Plot Deaths by Shootings Date
+
+# Firstly, I want to analyse the data of my dataset with table function
+
+d_gun <- table(shootings$date)
+print(d_gun)
+
+# Since it is a character, I will use a bar chart
+
+death_date <- ggplot(data = shootings, aes(y=date))
+death_date <- death_date + geom_bar()
+death_date <- death_date + scale_y_discrete(name="Date of Death") +
+  scale_x_continuous(name="Number of US Police killings") + ggtitle("US Police Shootings Deaths by Shooting Date")
+print(death_date)
+
+```
+
+
+2
+```{r}
+
+# Question 2 - Plot US Police Shootings Deaths by age
+
+# Firstly, I want to analyse the data of my dataset with table function
+
+t_age <- table(shootings$age)
+print(t_age)
+
+# Since it is a character, I will use a bar chart
+
+death_age <- ggplot(data = shootings, aes(y = age))
+death_age <- death_age + geom_bar()
+death_age <- death_age + scale_y_discrete(name="Age") +
+  scale_x_continuous(name="Number of US Police killings") + ggtitle("US Police Shootings Deaths by Age")
+print(death_age)
+
+```
+
+3
+```{r}
+
+# Question 3 - Viausalise number of deaths in each state and by race
+
+# Firstly, I want to analyse the data of my dataset with table function
+
+t_rs <- table(shootings$state, shootings$race)
+print(t_rs)
+
+# Since it is a character, I will use a bar chart
+
+death_race_state <- ggplot(data = shootings, aes(y = state, colour = race))
+death_race_state <- death_race_state + geom_bar()
+death_race_state <- death_race_state + scale_y_discrete(name="State") +
+  scale_x_continuous(name="Number of US Police killings") + ggtitle("US Police Shootings Deaths by Race and State")
+death_race_state <- death_race_state + theme(legend.position = "top", legend.title = element_text(size = 16), legend.text = element_text(size = 12))
+print(death_race_state)
+
+```
+
+
+4
+```{r}
+
+# Question 4 - Plot US Police Shootings Deaths by Manner of Death
+
+# Firstly, I want to analyse the data of my dataset with table function
+
+t_manner <- table(shootings$manner_of_death)
+print(t_manner)
+
+# Since it is a character, I will use a bar chart
+
+death_manner <- ggplot(data = shootings, aes(x = manner_of_death))
+death_manner <- death_manner + geom_bar()
+death_manner <- death_manner + scale_x_discrete(name="Manner of Death") +
+  scale_y_continuous(name="Number of US Police killings") + ggtitle("US Police Shootings Deaths by Manner of Death")
+print(death_manner)
+
+```
+
+5
+```{r}
+
+# Question 5 - Plot US Police Shootings by Cities
+
+# Firstly, I want to analyse the data of my dataset with table function
+
+t_city <- table(shootings$city)
+print(t_city)
+
+# Since it is a character, I will use a bar chart
+
+death_cities <- ggplot(data = shootings, aes(y = city))
+death_cities <- death_cities + geom_bar()
+death_cities <- death_cities + scale_y_discrete(name="City") +
+  scale_x_continuous(name="Number of US Police killings") + ggtitle("US Police Shootings Deaths by Cities")
+print(death_cities)
+
+```
+
+6
+```{r}
+
+# Question 6 - Plot US Police Shooting by Armed
+
+# Firstly, I want to analyse the data of my dataset with table function
+
+t_type <- table(shootings$armed)
+print(t_type)
+
+# Since it is a character, I will use a bar chart
+
+death_type <- ggplot(shootings, aes(y = armed))
+death_type <- death_type + geom_bar()
+death_type <- death_type + scale_y_discrete(name="Armed") +
+  scale_x_continuous(name="Number of US Police killings") + ggtitle("US Police Shootings Deaths by Armed Victim")
+print(death_type)
+
+```
+
+
+7
+```{r}
+# Question 7 - Plot US Police Shootings Deaths by Gun Category
+
+# Firstly, I want to analyse the data of my dataset with table function
+
+t_gun <- table(shootings$arms_category)
+print(t_gun)
+
+# Since it is a character, I will use a bar chart
+
+death_gun <- ggplot(data = shootings, aes(y=arms_category))
+death_gun <- death_gun + geom_bar(col = "red",
+           binwidth = 12,     
+           fill = "green", 
+                alpha = 0.2)
+death_gun <- death_gun + scale_y_discrete(name="Gun Category") +
+  scale_x_continuous(name="Number of US Police killings") + ggtitle("US Police Shootings Deaths by Gun Category")
+print(death_gun)
+
+```
+
+8
+```{r}
+# Question 8 - Plot Death distribution between race and gender
+
+# Firstly, I will use table to summarise the data since they are both categorical variables
+
+t_rg <- table(shootings$race, shootings$gender)
+print(t_rg)
+
+# Then,I will plot the bar chart, I will use the argument fill to fill the columns of female and male based on race, and position "dodge" to put them separeted. Finally, I will put horizontal as TRUE. 
+
+death_rg <- ggplot(shootings, aes(x = gender))
+death_rg <- death_rg + geom_bar(aes(fill = race),
+                                position = "dodge")
+death_rg <- death_rg + coord_flip() + scale_y_continuous(name="Number of US Police killings") +
+  scale_x_discrete(name="Gender of victims") + ggtitle("US Police Shooting Deaths by Race and Gender")
+death_rg <- death_rg + theme(axis.text.x = element_text(face="bold", color="#008000",
+                           size=8, angle=0),
+          axis.text.y = element_text(face="bold", color="#008000",
+                           size=8, angle=0))
+print(death_rg)
+
+```
+
+9
+```{r}
+# Question 9 - Plot Death distribution by race
+
+# Firstly, I will use table to summarise the data since it is a categorical variable
+
+t_race <- table(shootings$race)
+print(t_race)
+
+# Then,I will plot the bar chart
+
+death_race <- ggplot(shootings, aes(y = race))
+death_race <- death_race + geom_bar()
+death_race <- death_race + scale_y_discrete(name="Race") +
+  scale_x_continuous(name="Number of US Police killings") + ggtitle("US Police Shootings Deaths by Race")
+print(death_race)
+
+```
+
+
+10
+```{r}
+# Question 10 - US Police shootings deaths by body cam use and sign of mental illness
+
+# Firstly, I will use table to summarise the data since it is a categorical variable
+
+t_cam <- table(shootings$body_camera, shootings$signs_of_mental_illness)
+print(t_cam)
+
+# First,I split the table
+
+l_cam <- split(t_cam, seq(nrow(t_cam), ncol(t_cam)))
+
+# I convert into as a vector
+
+l_cam <- data.frame(l_cam)
+l_cam <- l_cam[,1]
+                   
+# Now, I call the pie function
+# First, I create a label for the chart
+
+lab <- c("Neither body cam, nor mental illness","Body cam, but no mental illness", "Mental illness but no body cam", "Body cam and mental illness")
+lab_cam <- paste(lab, l_cam)
+
+pie(l_cam, clockwise = TRUE, labels = lab_cam)
+
+```
