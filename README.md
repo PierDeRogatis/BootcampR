@@ -1,4 +1,4 @@
-# BootcampR
+# Bootcamp: R for Data Science
 
 Bootcamp Course Description:
 This course will help you build programming skills in the R programming language. R is an important programming language used by data scientists and those that work in data analytics and is particularly used by social scientists.   
